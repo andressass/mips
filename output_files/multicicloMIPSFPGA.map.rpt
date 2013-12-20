@@ -1,0 +1,742 @@
+Analysis & Synthesis report for multicicloMIPSFPGA
+Fri Dec 20 20:57:26 2013
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. User-Specified and Inferred Latches
+ 11. Logic Cells Representing Combinational Loops
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component|altsyncram_ufd1:auto_generated
+ 16. Parameter Settings for User Entity Instance: multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component
+ 17. altsyncram Parameter Settings by Entity Instance
+ 18. Port Connectivity Checks: "multicicloMIPS:multicicloMIPS0|controleMIPS:controle"
+ 19. Port Connectivity Checks: "multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula"
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Dec 20 20:57:26 2013           ;
+; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; multicicloMIPSFPGA                              ;
+; Top-level Entity Name              ; multicicloMIPSFPGA                              ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 3,789                                           ;
+;     Total combinational functions  ; 2,765                                           ;
+;     Dedicated logic registers      ; 1,188                                           ;
+; Total registers                    ; 1188                                            ;
+; Total pins                         ; 105                                             ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 8,192                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C70F896C6       ;                    ;
+; Top-level entity name                                                      ; multicicloMIPSFPGA ; multicicloMIPSFPGA ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 2      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                       ;
++----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                                               ; Library ;
++----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------------+---------+
+; memoriaMIPS.mif                  ; yes             ; User Memory Initialization File  ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/memoriaMIPS.mif           ;         ;
+; ulaMIPS.vhd                      ; yes             ; User VHDL File                   ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/ulaMIPS.vhd               ;         ;
+; operativaMIPSpkg.vhd             ; yes             ; User VHDL File                   ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/operativaMIPSpkg.vhd      ;         ;
+; operativaMIPS.vhd                ; yes             ; User VHDL File                   ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/operativaMIPS.vhd         ;         ;
+; multicicloMIPSpkg.vhd            ; yes             ; User VHDL File                   ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSpkg.vhd     ;         ;
+; multicicloMIPS.vhd               ; yes             ; User VHDL File                   ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPS.vhd        ;         ;
+; memoriaMIPS.vhd                  ; yes             ; User Wizard-Generated File       ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/memoriaMIPS.vhd           ;         ;
+; controleMIPS.vhd                 ; yes             ; User VHDL File                   ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/controleMIPS.vhd          ;         ;
+; bregMIPS.vhd                     ; yes             ; User VHDL File                   ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/bregMIPS.vhd              ;         ;
+; multicicloMIPSFPGA.vhd           ; yes             ; User VHDL File                   ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd    ;         ;
+; seteSegm.vhd                     ; yes             ; User VHDL File                   ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/seteSegm.vhd              ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                     ; /home/andressa/Programas/altera/13.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                     ; /home/andressa/Programas/altera/13.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                     ; /home/andressa/Programas/altera/13.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                     ; /home/andressa/Programas/altera/13.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                     ; /home/andressa/Programas/altera/13.1/quartus/libraries/megafunctions/aglobal130.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                     ; /home/andressa/Programas/altera/13.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                     ; /home/andressa/Programas/altera/13.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                     ; /home/andressa/Programas/altera/13.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                     ; /home/andressa/Programas/altera/13.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_ufd1.tdf           ; yes             ; Auto-Generated Megafunction      ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/db/altsyncram_ufd1.tdf    ;         ;
++----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary           ;
++---------------------------------------------+---------+
+; Resource                                    ; Usage   ;
++---------------------------------------------+---------+
+; Estimated Total logic elements              ; 3,789   ;
+;                                             ;         ;
+; Total combinational functions               ; 2765    ;
+; Logic element usage by number of LUT inputs ;         ;
+;     -- 4 input functions                    ; 2275    ;
+;     -- 3 input functions                    ; 421     ;
+;     -- <=2 input functions                  ; 69      ;
+;                                             ;         ;
+; Logic elements by mode                      ;         ;
+;     -- normal mode                          ; 2702    ;
+;     -- arithmetic mode                      ; 63      ;
+;                                             ;         ;
+; Total registers                             ; 1188    ;
+;     -- Dedicated logic registers            ; 1188    ;
+;     -- I/O registers                        ; 0       ;
+;                                             ;         ;
+; I/O pins                                    ; 105     ;
+; Total memory bits                           ; 8192    ;
+; Embedded Multiplier 9-bit elements          ; 0       ;
+; Maximum fan-out node                        ; iKEY[0] ;
+; Maximum fan-out                             ; 1188    ;
+; Total fan-out                               ; 14363   ;
+; Average fan-out                             ; 3.51    ;
++---------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                    ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                       ; Library Name ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |multicicloMIPSFPGA                             ; 2765 (302)        ; 1188 (0)     ; 8192        ; 0            ; 0       ; 0         ; 105  ; 0            ; |multicicloMIPSFPGA                                                                                                                                       ; work         ;
+;    |multicicloMIPS:multicicloMIPS0|             ; 2407 (0)          ; 1188 (0)     ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0                                                                                                        ; work         ;
+;       |controleMIPS:controle|                   ; 48 (48)           ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|controleMIPS:controle                                                                                  ; work         ;
+;       |operativaMIPS:operativa|                 ; 2359 (202)        ; 1184 (192)   ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa                                                                                ; work         ;
+;          |bregMIPS:breg|                        ; 1384 (1384)       ; 992 (992)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg                                                                  ; work         ;
+;          |memoriaMIPS:mem|                      ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem                                                                ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component                                ; work         ;
+;                |altsyncram_ufd1:auto_generated| ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component|altsyncram_ufd1:auto_generated ; work         ;
+;          |ulaMIPS:ula|                          ; 773 (773)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula                                                                    ; work         ;
+;    |seteSegm:seteSegm0|                         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|seteSegm:seteSegm0                                                                                                                    ; work         ;
+;    |seteSegm:seteSegm1|                         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|seteSegm:seteSegm1                                                                                                                    ; work         ;
+;    |seteSegm:seteSegm2|                         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|seteSegm:seteSegm2                                                                                                                    ; work         ;
+;    |seteSegm:seteSegm3|                         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|seteSegm:seteSegm3                                                                                                                    ; work         ;
+;    |seteSegm:seteSegm4|                         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|seteSegm:seteSegm4                                                                                                                    ; work         ;
+;    |seteSegm:seteSegm5|                         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|seteSegm:seteSegm5                                                                                                                    ; work         ;
+;    |seteSegm:seteSegm6|                         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|seteSegm:seteSegm6                                                                                                                    ; work         ;
+;    |seteSegm:seteSegm7|                         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |multicicloMIPSFPGA|seteSegm:seteSegm7                                                                                                                    ; work         ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                           ;
++--------------------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+-----------------+
+; Name                                                                                                                                             ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF             ;
++--------------------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+-----------------+
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component|altsyncram_ufd1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 256          ; 32           ; --           ; --           ; 8192 ; memoriaMIPS.mif ;
++--------------------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+-----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                                                                                         ;
++--------+--------------+---------+--------------+--------------+--------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                                                            ; IP Include File                                                                  ;
++--------+--------------+---------+--------------+--------------+--------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+; Altera ; RAM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem ; /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/memoriaMIPS.vhd ;
++--------+--------------+---------+--------------+--------------+--------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                                                            ;
++------------------------------------------------------------------------+--------------------------------------------------------------+------------------------+
+; Latch Name                                                             ; Latch Enable Signal                                          ; Free of Timing Hazards ;
++------------------------------------------------------------------------+--------------------------------------------------------------+------------------------+
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[0]          ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[1]          ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgAALU           ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux28   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgBALU[0]        ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux28   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgBALU[1]        ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux28   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|writeBREG         ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|regDst            ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mem2Reg           ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|writeMem          ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|iorD              ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|escreveIR         ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgPC[0]          ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgPC[1]          ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|escrevePC         ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|escrevePCCond     ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|escrevePCCondN    ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|cntrEnd_signal[0] ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|cntrEnd_signal[1] ; multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mux31   ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|saidaCntrALU[0] ; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|Mux73 ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|saidaCntrALU[1] ; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|Mux73 ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|saidaCntrALU[2] ; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|Mux73 ; yes                    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|saidaCntrALU[3] ; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|Mux73 ; yes                    ;
+; Number of user-specified and inferred latches = 22                     ;                                                              ;                        ;
++------------------------------------------------------------------------+--------------------------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-------------------------------------------------------------------------------+
+; Logic Cells Representing Combinational Loops                                  ;
++--------------------------------------------------------------------------+----+
+; Logic Cell Name                                                          ;    ;
++--------------------------------------------------------------------------+----+
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[0]  ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[1]  ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[2]  ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[3]  ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[4]  ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[5]  ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[6]  ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[7]  ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[8]  ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[9]  ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[10] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[11] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[12] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[13] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[14] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[15] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[16] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[17] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[18] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[19] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[20] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[21] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[22] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[23] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[24] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[25] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[26] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[27] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[28] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[29] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[30] ;    ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Z[31] ;    ;
+; Number of logic cells representing combinational loops                   ; 32 ;
++--------------------------------------------------------------------------+----+
+Note: All cells listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                        ;
++----------------------------------------------------------------------------------+----------------------------------------+
+; Register name                                                                    ; Reason for Removal                     ;
++----------------------------------------------------------------------------------+----------------------------------------+
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][3]  ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][2]  ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][1]  ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][0]  ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][7]  ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][6]  ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][5]  ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][4]  ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][11] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][10] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][9]  ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][8]  ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][15] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][14] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][13] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][12] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][19] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][18] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][17] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][16] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][23] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][22] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][21] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][20] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][27] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][26] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][25] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][24] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][31] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][30] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][29] ; Stuck at GND due to stuck port data_in ;
+; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][28] ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 32                                           ;                                        ;
++----------------------------------------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1188  ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1056  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------+
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg|breg[0][1] ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; Yes        ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|regB[14]                 ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; Yes        ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|regA[16]                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|Mux31                    ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|Mux14                    ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|Mux62                    ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|Mux60                    ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|Mux18                    ;
+; 15:1               ; 23 bits   ; 230 LEs       ; 184 LEs              ; 46 LEs                 ; No         ; |multicicloMIPSFPGA|Mux3                                                                            ;
+; 15:1               ; 3 bits    ; 30 LEs        ; 24 LEs               ; 6 LEs                  ; No         ; |multicicloMIPSFPGA|Mux26                                                                           ;
+; 15:1               ; 3 bits    ; 30 LEs        ; 27 LEs               ; 3 LEs                  ; No         ; |multicicloMIPSFPGA|Mux30                                                                           ;
+; 1:1                ; 32 bits   ; 0 LEs         ; 0 LEs                ; 0 LEs                  ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Add0         ;
+; 17:1               ; 7 bits    ; 77 LEs        ; 56 LEs               ; 21 LEs                 ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Mux8         ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 64 LEs               ; 16 LEs                 ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Mux23        ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 36 LEs               ; 12 LEs                 ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Mux7         ;
+; 17:1               ; 4 bits    ; 44 LEs        ; 32 LEs               ; 12 LEs                 ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Mux26        ;
+; 19:1               ; 2 bits    ; 24 LEs        ; 20 LEs               ; 4 LEs                  ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Mux2         ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; No         ; |multicicloMIPSFPGA|multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Mux29        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component|altsyncram_ufd1:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                             ;
++---------------------------------+--------------------+------+------------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                              ;
++---------------------------------+--------------------+------+------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+-----------------------------------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                                                    ;
++------------------------------------+----------------------+-----------------------------------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                                                 ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                                              ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                                            ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                                            ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                                          ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                                                 ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                                                                                 ;
+; WIDTH_A                            ; 32                   ; Signed Integer                                                                          ;
+; WIDTHAD_A                          ; 8                    ; Signed Integer                                                                          ;
+; NUMWORDS_A                         ; 256                  ; Signed Integer                                                                          ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                                                                 ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                                                 ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                                                 ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                                                 ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                                                 ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                                                 ;
+; WIDTH_B                            ; 1                    ; Untyped                                                                                 ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                                                                 ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                                                                 ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                                                 ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                                                 ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                                                 ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                                                 ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                                                 ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                                                 ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                                                 ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                                                 ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                                                 ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                                                 ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                                                 ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                                                 ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                                                          ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                                                 ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                                                 ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                                                                 ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                                                 ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                                                 ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                                                 ;
+; INIT_FILE                          ; memoriaMIPS.mif      ; Untyped                                                                                 ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                                                 ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                                                 ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                                                 ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                                                 ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                                                 ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                                                 ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                                                 ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                                                 ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                                                 ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                                                 ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                                                 ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped                                                                                 ;
+; CBXI_PARAMETER                     ; altsyncram_ufd1      ; Untyped                                                                                 ;
++------------------------------------+----------------------+-----------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                                                                   ;
++-------------------------------------------+--------------------------------------------------------------------------------------------------------+
+; Name                                      ; Value                                                                                                  ;
++-------------------------------------------+--------------------------------------------------------------------------------------------------------+
+; Number of entity instances                ; 1                                                                                                      ;
+; Entity Instance                           ; multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                                                            ;
+;     -- WIDTH_A                            ; 32                                                                                                     ;
+;     -- NUMWORDS_A                         ; 256                                                                                                    ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                                                           ;
+;     -- WIDTH_B                            ; 1                                                                                                      ;
+;     -- NUMWORDS_B                         ; 1                                                                                                      ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                                                 ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                                           ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                                                   ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                                              ;
++-------------------------------------------+--------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "multicicloMIPS:multicicloMIPS0|controleMIPS:controle"                                   ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; readbreg ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; readmem  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula"                 ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; vai  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; ovfl ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:28     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 32-bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Fri Dec 20 20:56:50 2013
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off multicicloMIPSFPGA -c multicicloMIPSFPGA
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file testbench_multiciclo.vhd
+    Info (12022): Found design unit 1: testbench_multiciclo-test_multiciclo
+    Info (12023): Found entity 1: testbench_multiciclo
+Info (12021): Found 2 design units, including 1 entities, in source file ulaMIPS.vhd
+    Info (12022): Found design unit 1: ulaMIPS-behavior
+    Info (12023): Found entity 1: ulaMIPS
+Info (12021): Found 1 design units, including 0 entities, in source file operativaMIPSpkg.vhd
+    Info (12022): Found design unit 1: operativaMIPSpkg
+Info (12021): Found 2 design units, including 1 entities, in source file operativaMIPS.vhd
+    Info (12022): Found design unit 1: operativaMIPS-behavior
+    Info (12023): Found entity 1: operativaMIPS
+Info (12021): Found 1 design units, including 0 entities, in source file multicicloMIPSpkg.vhd
+    Info (12022): Found design unit 1: multicicloMIPSpkg
+Info (12021): Found 2 design units, including 1 entities, in source file multicicloMIPS.vhd
+    Info (12022): Found design unit 1: multicicloMIPS-behavior
+    Info (12023): Found entity 1: multicicloMIPS
+Info (12021): Found 2 design units, including 1 entities, in source file memoriaMIPS.vhd
+    Info (12022): Found design unit 1: memoriamips-SYN
+    Info (12023): Found entity 1: memoriaMIPS
+Info (12021): Found 2 design units, including 1 entities, in source file controleMIPS.vhd
+    Info (12022): Found design unit 1: controleMIPS-behavior
+    Info (12023): Found entity 1: controleMIPS
+Info (12021): Found 2 design units, including 1 entities, in source file bregMIPS.vhd
+    Info (12022): Found design unit 1: bregMIPS-behavior
+    Info (12023): Found entity 1: bregMIPS
+Info (12021): Found 2 design units, including 1 entities, in source file multicicloMIPSFPGA.vhd
+    Info (12022): Found design unit 1: multicicloMIPSFPGA-behavior
+    Info (12023): Found entity 1: multicicloMIPSFPGA
+Info (12021): Found 2 design units, including 1 entities, in source file seteSegm.vhd
+    Info (12022): Found design unit 1: seteSegm-behavior
+    Info (12023): Found entity 1: seteSegm
+Info (12127): Elaborating entity "multicicloMIPSFPGA" for the top level hierarchy
+Warning (10873): Using initial value X (don't care) for net "oLEDG[7..4]" at multicicloMIPSFPGA.vhd(11)
+Info (12129): Elaborating entity "multicicloMIPS" using architecture "A:behavior" for hierarchy "multicicloMIPS:multicicloMIPS0"
+Info (12128): Elaborating entity "operativaMIPS" for hierarchy "multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa"
+Warning (10492): VHDL Process Statement warning at operativaMIPS.vhd(120): signal "escrevePC" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at operativaMIPS.vhd(244): inferring latch(es) for signal or variable "saidaCntrALU", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "saidaCntrALU[0]" at operativaMIPS.vhd(244)
+Info (10041): Inferred latch for "saidaCntrALU[1]" at operativaMIPS.vhd(244)
+Info (10041): Inferred latch for "saidaCntrALU[2]" at operativaMIPS.vhd(244)
+Info (10041): Inferred latch for "saidaCntrALU[3]" at operativaMIPS.vhd(244)
+Info (12128): Elaborating entity "memoriaMIPS" for hierarchy "multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component" with the following parameter:
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "memoriaMIPS.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone II"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "256"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "widthad_a" = "8"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ufd1.tdf
+    Info (12023): Found entity 1: altsyncram_ufd1
+Info (12128): Elaborating entity "altsyncram_ufd1" for hierarchy "multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component|altsyncram_ufd1:auto_generated"
+Info (12128): Elaborating entity "bregMIPS" for hierarchy "multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|bregMIPS:breg"
+Info (12128): Elaborating entity "ulaMIPS" for hierarchy "multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula"
+Warning (10492): VHDL Process Statement warning at ulaMIPS.vhd(77): signal "shamt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ulaMIPS.vhd(81): signal "shamt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ulaMIPS.vhd(85): signal "shamt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at ulaMIPS.vhd(16): inferring latch(es) for signal or variable "Z_var", which holds its previous value in one or more paths through the process
+Info (12128): Elaborating entity "controleMIPS" for hierarchy "multicicloMIPS:multicicloMIPS0|controleMIPS:controle"
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "opALU", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "orgAALU", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "orgBALU", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "readBREG", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "writeBREG", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "regDst", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "Mem2Reg", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "readMem", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "writeMem", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "iorD", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "escreveIR", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "orgPC", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "escrevePC", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "escrevePCCond", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "escrevePCCondN", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at controleMIPS.vhd(35): inferring latch(es) for signal or variable "cntrEnd_signal", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "cntrEnd_signal[0]" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "cntrEnd_signal[1]" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "escrevePCCondN" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "escrevePCCond" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "escrevePC" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "orgPC[0]" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "orgPC[1]" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "escreveIR" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "iorD" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "writeMem" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "readMem" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "Mem2Reg" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "regDst" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "writeBREG" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "readBREG" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "orgBALU[0]" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "orgBALU[1]" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "orgAALU" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "opALU[0]" at controleMIPS.vhd(35)
+Info (10041): Inferred latch for "opALU[1]" at controleMIPS.vhd(35)
+Info (12129): Elaborating entity "seteSegm" using architecture "A:behavior" for hierarchy "seteSegm:seteSegm0"
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgPC[0]" merged with LATCH primitive "multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[0]"
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[3]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgAALU has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[1]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgBALU[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[1]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgBALU[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|writeBREG has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|regDst has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|Mem2Reg has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|writeMem has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|iorD has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|escreveIR has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgPC[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[3]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|escrevePC has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|escrevePCCond has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[3]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|escrevePCCondN has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[3]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|cntrEnd_signal[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|controleMIPS:controle|cntrEnd_signal[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|saidaCntrALU[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[0]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|saidaCntrALU[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[1]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|saidaCntrALU[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|RI[1]
+Warning (13012): Latch multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|saidaCntrALU[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|RI[5]
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "oLEDG[4]" is stuck at GND
+    Warning (13410): Pin "oLEDG[5]" is stuck at GND
+    Warning (13410): Pin "oLEDG[6]" is stuck at GND
+    Warning (13410): Pin "oLEDG[7]" is stuck at GND
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 17 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "iKEY[1]"
+    Warning (15610): No output dependent on input pin "iKEY[2]"
+    Warning (15610): No output dependent on input pin "iKEY[3]"
+    Warning (15610): No output dependent on input pin "iSW[4]"
+    Warning (15610): No output dependent on input pin "iSW[5]"
+    Warning (15610): No output dependent on input pin "iSW[6]"
+    Warning (15610): No output dependent on input pin "iSW[7]"
+    Warning (15610): No output dependent on input pin "iSW[8]"
+    Warning (15610): No output dependent on input pin "iSW[9]"
+    Warning (15610): No output dependent on input pin "iSW[10]"
+    Warning (15610): No output dependent on input pin "iSW[11]"
+    Warning (15610): No output dependent on input pin "iSW[12]"
+    Warning (15610): No output dependent on input pin "iSW[13]"
+    Warning (15610): No output dependent on input pin "iSW[14]"
+    Warning (15610): No output dependent on input pin "iSW[15]"
+    Warning (15610): No output dependent on input pin "iSW[16]"
+    Warning (15610): No output dependent on input pin "iSW[17]"
+Info (21057): Implemented 4022 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 23 input pins
+    Info (21059): Implemented 82 output pins
+    Info (21061): Implemented 3885 logic cells
+    Info (21064): Implemented 32 RAM segments
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 89 warnings
+    Info: Peak virtual memory: 388 megabytes
+    Info: Processing ended: Fri Dec 20 20:57:26 2013
+    Info: Elapsed time: 00:00:36
+    Info: Total CPU time (on all processors): 00:00:36
+
+

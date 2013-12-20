@@ -1,0 +1,96 @@
+# ERROR: No extended dataflow license exists
+# do multicicloMIPSFPGA_run_msim_rtl_vhdl.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying /home/andressa/Programas/altera/13.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied /home/andressa/Programas/altera/13.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vcom -93 -work work {/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/ulaMIPS.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ulaMIPS
+# -- Compiling architecture behavior of ulaMIPS
+# vcom -93 -work work {/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/operativaMIPSpkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package operativaMIPSpkg
+# vcom -93 -work work {/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSpkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package multicicloMIPSpkg
+# vcom -93 -work work {/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/memoriaMIPS.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity memoriaMIPS
+# -- Compiling architecture SYN of memoriamips
+# vcom -93 -work work {/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/controleMIPS.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity controleMIPS
+# -- Compiling architecture behavior of controleMIPS
+# vcom -93 -work work {/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/bregMIPS.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity bregMIPS
+# -- Compiling architecture behavior of bregMIPS
+# vcom -93 -work work {/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity multicicloMIPSFPGA
+# -- Compiling architecture behavior of multicicloMIPSFPGA
+# ** Error: (vcom-11) Could not find work.multiciclomips.
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(49): (vcom-1195) Cannot find expanded name "work.multicicloMIPS".
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(49): Unknown expanded name.
+# ** Error: (vcom-11) Could not find work.setesegm.
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(114): (vcom-1195) Cannot find expanded name "work.seteSegm".
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(114): Unknown expanded name.
+# ** Error: (vcom-11) Could not find work.setesegm.
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(119): (vcom-1195) Cannot find expanded name "work.seteSegm".
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(119): Unknown expanded name.
+# ** Error: (vcom-11) Could not find work.setesegm.
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(124): (vcom-1195) Cannot find expanded name "work.seteSegm".
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(124): Unknown expanded name.
+# ** Error: (vcom-11) Could not find work.setesegm.
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(129): (vcom-1195) Cannot find expanded name "work.seteSegm".
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(129): Unknown expanded name.
+# ** Error: (vcom-11) Could not find work.setesegm.
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(134): (vcom-1195) Cannot find expanded name "work.seteSegm".
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(134): Unknown expanded name.
+# ** Error: (vcom-11) Could not find work.setesegm.
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(139): (vcom-1195) Cannot find expanded name "work.seteSegm".
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(139): Unknown expanded name.
+# ** Error: (vcom-11) Could not find work.setesegm.
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(144): (vcom-1195) Cannot find expanded name "work.seteSegm".
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(144): Unknown expanded name.
+# ** Error: (vcom-11) Could not find work.setesegm.
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(149): (vcom-1195) Cannot find expanded name "work.seteSegm".
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(149): Unknown expanded name.
+# ** Error: /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd(154): VHDL Compiler exiting
+# ** Error: /home/andressa/Programas/altera/13.1/modelsim_ase/linuxaloem/vcom failed.
+# Error in macro ./multicicloMIPSFPGA_run_msim_rtl_vhdl.do line 14
+# /home/andressa/Programas/altera/13.1/modelsim_ase/linuxaloem/vcom failed.
+#     while executing
+# "vcom -93 -work work {/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd}"

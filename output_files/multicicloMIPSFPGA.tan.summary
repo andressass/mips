@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 37.540 ns
+From           : multicicloMIPS:multicicloMIPS0|controleMIPS:controle|orgBALU[0]
+To             : oHEX7_D[0]
+From Clock     : iKEY[0]
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 24.760 ns
+From           : iSW[2]
+To             : oHEX7_D[0]
+From Clock     : --
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Clock Setup: 'iKEY[0]'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 45.82 MHz ( period = 21.826 ns )
+From           : multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|saidaCntrALU[0]
+To             : multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|ulaMIPS:ula|Mux5~9
+From Clock     : iKEY[0]
+To Clock       : iKEY[0]
+Failed Paths   : 0
+
+Type           : Clock Setup: 'iCLK_28'
+Slack          : N/A
+Required Time  : None
+Actual Time    : Restricted to 200.00 MHz ( period = 5.000 ns )
+From           : multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component|altsyncram_ufd1:auto_generated|ram_block1a5~porta_datain_reg13
+To             : multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|memoriaMIPS:mem|altsyncram:altsyncram_component|altsyncram_ufd1:auto_generated|ram_block1a31~porta_memory_reg0
+From Clock     : iCLK_28
+To Clock       : iCLK_28
+Failed Paths   : 0
+
+Type           : Clock Hold: 'iKEY[0]'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|RI[10]
+To             : multicicloMIPS:multicicloMIPS0|operativaMIPS:operativa|PC[12]
+From Clock     : iKEY[0]
+To Clock       : iKEY[0]
+Failed Paths   : 1859
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 1859
+
+--------------------------------------------------------------------------------------
+

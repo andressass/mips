@@ -1,0 +1,154 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity multicicloMIPSFPGA is
+	port (
+			iKEY	: in std_logic_vector(3 downto 0);
+			iCLK_28	: in std_logic;
+			iSW		: in std_logic_vector(17 downto 0);
+			oLEDR	: out std_logic_vector(17 downto 0);
+			oLEDG	: out std_logic_vector(7 downto 0);
+			oHEX0_D	: out std_logic_vector(6 downto 0);
+			oHEX1_D	: out std_logic_vector(6 downto 0);
+			oHEX2_D	: out std_logic_vector(6 downto 0);
+			oHEX3_D	: out std_logic_vector(6 downto 0);
+			oHEX4_D	: out std_logic_vector(6 downto 0);
+			oHEX5_D	: out std_logic_vector(6 downto 0);
+			oHEX6_D	: out std_logic_vector(6 downto 0);
+			oHEX7_D	: out std_logic_vector(6 downto 0)
+	);
+end multicicloMIPSFPGA;
+
+architecture behavior of multicicloMIPSFPGA is
+signal digito0					: std_logic_vector(3 downto 0);
+signal digito1					: std_logic_vector(3 downto 0);
+signal digito2					: std_logic_vector(3 downto 0);
+signal digito3					: std_logic_vector(3 downto 0);
+signal digito4					: std_logic_vector(3 downto 0);
+signal digito5					: std_logic_vector(3 downto 0);
+signal digito6					: std_logic_vector(3 downto 0);
+signal digito7					: std_logic_vector(3 downto 0);
+signal saidaMux7seg				: std_logic_vector(31 downto 0);
+signal PC_sinal					: std_logic_vector(31 downto 0);
+signal saidaMuxMem_sinal		: std_logic_vector(7 downto 0);
+signal RI_sinal					: std_logic_vector(31 downto 0);
+signal MDR_sinal				: std_logic_vector(31 downto 0);
+signal saidaMuxRegDst_sinal		: std_logic_vector(4 downto 0);
+signal saidaMuxMem2Reg_sinal	: std_logic_vector(31 downto 0);
+signal regA_sinal				: std_logic_vector(31 downto 0);
+signal regB_sinal				: std_logic_vector(31 downto 0);
+signal saidaCntrALU_sinal		: std_logic_vector(3 downto 0);
+signal saidaMuxULA1_sinal		: std_logic_vector(31 downto 0);
+signal saidaMuxULA2_sinal		: std_logic_vector(31 downto 0);
+signal shamt_sinal				: std_logic_vector(4 downto 0);
+signal zero_sinal				: std_logic;
+signal SaidaALU_sinal			: std_logic_vector(31 downto 0);
+signal saidaMuxPC_sinal			: std_logic_vector(31 downto 0);
+begin
+	multicicloMIPS0	: entity work.multicicloMIPS(behavior)
+		port map (
+					reset				=> iSW(17),
+					clk					=> iKEY(0),
+					clkAddressMem		=> iCLK_28,
+					opALU_t				=> oLEDR(1 downto 0),
+					orgAALU_t			=> oLEDR(2),
+					orgBALU_t			=> oLEDR(4 downto 3),
+					writeBREG_t			=> oLEDR(5),
+					regDst_t			=> oLEDR(6),
+					Mem2Reg_t			=> oLEDR(7),
+					writeMem_t			=> oLEDR(8),
+					iorD_t				=> oLEDR(9),
+					escreveIR_t			=> oLEDR(10),
+					orgPC_t				=> oLEDR(12 downto 11),
+					escrevePC_t			=> oLEDR(13),
+					escrevePCCond_t		=> oLEDR(14),
+					escrevePCCondN_t	=> oLEDR(15),
+					cntrEnd_t			=> oLEDR(17 downto 16),
+					regEstado_t			=> oLEDG(3 downto 0),
+					PC_t				=> PC_sinal,
+					saidaMuxMem_t		=> saidaMuxMem_sinal,
+					RI_t				=> RI_sinal,
+					MDR_t				=> MDR_sinal,
+					saidaMuxRegDst_t	=> saidaMuxRegDst_sinal,
+					saidaMuxMem2Reg_t	=> saidaMuxMem2Reg_sinal,
+					regA_t				=> regA_sinal,
+					regB_t				=> regB_sinal,
+					saidaCntrALU_t		=> saidaCntrALU_sinal,
+					saidaMuxULA1_t		=> saidaMuxULA1_sinal,
+					saidaMuxULA2_t		=> saidaMuxULA2_sinal,
+					shamt_t				=> shamt_sinal,
+					zero_t				=> zero_sinal,
+					SaidaALU_t			=> SaidaALU_sinal,
+					saidaMuxPC_t		=> saidaMuxPC_sinal
+		);
+	
+	with iSW(3 downto 0) select
+		saidaMux7seg <= PC_sinal when "0000",
+						"000000000000000000000000" & saidaMuxMem_sinal when "0001",
+						RI_sinal when "0010",
+						MDR_sinal when "0011",
+						"000000000000000000000000000" & saidaMuxRegDst_sinal when "0100",
+						saidaMuxMem2Reg_sinal when "0101",
+						regA_sinal when "0110",
+						regB_sinal when "0111",
+						"0000000000000000000000000000" & saidaCntrALU_sinal when "1000",
+						saidaMuxULA1_sinal when "1001",
+						saidaMuxULA2_sinal when "1010",
+						"000000000000000000000000000" & shamt_sinal	when "1011",
+						"0000000000000000000000000000000" & zero_sinal when "1100",
+						SaidaALU_sinal when "1101",
+						saidaMuxPC_sinal when "1110",
+						"UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" when others;
+						
+	
+	digito0 <= saidaMux7seg(3 downto 0);
+	digito1 <= saidaMux7seg(7 downto 4);
+	digito2 <= saidaMux7seg(11 downto 8);
+	digito3 <= saidaMux7seg(15 downto 12);
+	digito4 <= saidaMux7seg(19 downto 16);
+	digito5 <= saidaMux7seg(23 downto 20);
+	digito6 <= saidaMux7seg(27 downto 24);
+	digito7 <= saidaMux7seg(31 downto 28);
+	
+	seteSegm0 : entity work.seteSegm(behavior)
+		port map (
+					digito	=> digito0,
+					oHEX	=> oHEX0_D
+		);
+	seteSegm1 : entity work.seteSegm(behavior)
+		port map (
+					digito	=> digito1,
+					oHEX	=> oHEX1_D
+		);
+	seteSegm2 : entity work.seteSegm(behavior)
+		port map (
+					digito	=> digito2,
+					oHEX	=> oHEX2_D
+		);
+	seteSegm3 : entity work.seteSegm(behavior)
+		port map (
+					digito	=> digito3,
+					oHEX	=> oHEX3_D
+		);
+	seteSegm4 : entity work.seteSegm(behavior)
+		port map (
+					digito	=> digito4,
+					oHEX	=> oHEX4_D
+		);
+	seteSegm5 : entity work.seteSegm(behavior)
+		port map (
+					digito	=> digito5,
+					oHEX	=> oHEX5_D
+		);
+	seteSegm6 : entity work.seteSegm(behavior)
+		port map (
+					digito	=> digito6,
+					oHEX	=> oHEX6_D
+		);
+	seteSegm7 : entity work.seteSegm(behavior)
+		port map (
+					digito	=> digito7,
+					oHEX	=> oHEX7_D
+		);
+end architecture;

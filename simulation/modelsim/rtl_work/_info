@@ -1,0 +1,209 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/simulation/modelsim
+Ebregmips
+Z1 w1387119424
+Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z5 d/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/simulation/modelsim
+Z6 8/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/bregMIPS.vhd
+Z7 F/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/bregMIPS.vhd
+l0
+L5
+VlZ:;UcXIFIIi6bRhH3URB1
+Z8 OV;C;10.1d;51
+31
+Z9 !s108 1387580261.669818
+Z10 !s90 -reportprogress|300|-93|-work|work|/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/bregMIPS.vhd|
+Z11 !s107 /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/bregMIPS.vhd|
+Z12 o-93 -work work -O0
+Z13 tExplicit 1
+!s100 @kKKW_<MMk54ZZN3n:JJ43
+!i10b 1
+Abehavior
+R2
+R3
+R4
+DEx4 work 8 bregmips 0 22 lZ:;UcXIFIIi6bRhH3URB1
+l16
+L13
+VJ1?_oi2848Y7NzMf3U4i83
+R8
+31
+R9
+R10
+R11
+R12
+R13
+!s100 ZM1l1`:85Nz9]mFNBiKo=0
+!i10b 1
+Econtrolemips
+Z14 w1387418430
+R2
+R3
+R4
+R5
+Z15 8/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/controleMIPS.vhd
+Z16 F/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/controleMIPS.vhd
+l0
+L5
+VEPo0Je71EQBR9ini?Okbn2
+R8
+31
+Z17 !s108 1387580261.589723
+Z18 !s90 -reportprogress|300|-93|-work|work|/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/controleMIPS.vhd|
+Z19 !s107 /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/controleMIPS.vhd|
+R12
+R13
+!s100 AMk0kQUimz`]V^dLc2:>i0
+!i10b 1
+Abehavior
+R2
+R3
+R4
+DEx4 work 12 controlemips 0 22 EPo0Je71EQBR9ini?Okbn2
+l34
+L28
+Ve8oZ?J37A8XYEgf_YQK=F1
+R8
+31
+R17
+R18
+R19
+R12
+R13
+!s100 f[dLN@3H7WC2MRg@kb_>22
+!i10b 1
+Ememoriamips
+Z20 w1385000010
+R3
+R4
+R5
+Z21 8/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/memoriaMIPS.vhd
+Z22 F/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/memoriaMIPS.vhd
+l0
+L42
+V8lc=XccH4Lnlh2fki?dJe3
+R8
+31
+Z23 !s108 1387580261.528680
+Z24 !s90 -reportprogress|300|-93|-work|work|/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/memoriaMIPS.vhd|
+Z25 !s107 /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/memoriaMIPS.vhd|
+R12
+R13
+!s100 IEbQHXoMJgTD8DlA^nCP83
+!i10b 1
+Asyn
+R3
+R4
+DEx4 work 11 memoriamips 0 22 8lc=XccH4Lnlh2fki?dJe3
+l86
+L54
+VQ^f:6JdI<b1jl4gnECJ^72
+R8
+31
+R23
+R24
+R25
+R12
+R13
+!s100 ^KFoOQIP]zbgncINM6QIG1
+!i10b 1
+Emulticiclomipsfpga
+w1387579844
+R2
+R3
+R4
+R5
+8/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd
+F/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd
+l0
+L5
+V_9RVkL:QWz0i78cF3LlkL3
+!s100 mcflcdZB_2=dBcoo>aiCU3
+R8
+31
+!i10b 1
+!s108 1387580261.742669
+!s90 -reportprogress|300|-93|-work|work|/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd|
+!s107 /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSFPGA.vhd|
+R12
+R13
+Pmulticiclomipspkg
+R3
+R4
+w1387579776
+R5
+8/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSpkg.vhd
+F/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSpkg.vhd
+l0
+L4
+V[go_J0mcS[aT^1bdz=@CM3
+R8
+31
+R12
+R13
+!s100 D39I`U0P0L3ZSEc;1?L562
+!i10b 1
+!s108 1387580261.476389
+!s90 -reportprogress|300|-93|-work|work|/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSpkg.vhd|
+!s107 /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/multicicloMIPSpkg.vhd|
+Poperativamipspkg
+R3
+R4
+w1387141372
+R5
+8/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/operativaMIPSpkg.vhd
+F/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/operativaMIPSpkg.vhd
+l0
+L4
+VRM[Y_j6<=i@8Qm=3HJKad1
+R8
+31
+R12
+R13
+!s100 PDDS7HBA3XhiN=n=<ZTec0
+!i10b 1
+!s108 1387580261.423686
+!s90 -reportprogress|300|-93|-work|work|/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/operativaMIPSpkg.vhd|
+!s107 /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/operativaMIPSpkg.vhd|
+Eulamips
+Z26 w1387158292
+R2
+R3
+R4
+R5
+Z27 8/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/ulaMIPS.vhd
+Z28 F/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/ulaMIPS.vhd
+l0
+L5
+VFdU^VFi3QILdFVRc6kg:Q1
+R8
+31
+Z29 !s108 1387580261.345672
+Z30 !s90 -reportprogress|300|-93|-work|work|/home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/ulaMIPS.vhd|
+Z31 !s107 /home/andressa/Programas/altera/13.1/Projetos/multicicloMIPSFPGA/ulaMIPS.vhd|
+R12
+R13
+!s100 MAAW1`@]7hKmnlb3lZdYD1
+!i10b 1
+Abehavior
+R2
+R3
+R4
+DEx4 work 7 ulamips 0 22 FdU^VFi3QILdFVRc6kg:Q1
+l15
+L14
+VndQG]zlVR@oc0A9XUoO?]0
+R8
+31
+R29
+R30
+R31
+R12
+R13
+!s100 eHbONQU4d3EU3a8F99CcE0
+!i10b 1

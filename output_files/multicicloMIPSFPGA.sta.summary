@@ -1,0 +1,101 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'iKEY[0]'
+Slack : -15.126
+TNS   : -7352.322
+
+Type  : Slow Model Setup 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]'
+Slack : -3.426
+TNS   : -24.786
+
+Type  : Slow Model Setup 'iCLK_28'
+Slack : -3.078
+TNS   : -130.773
+
+Type  : Slow Model Setup 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[0]'
+Slack : -1.442
+TNS   : -2.662
+
+Type  : Slow Model Hold 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]'
+Slack : -3.175
+TNS   : -19.307
+
+Type  : Slow Model Hold 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[0]'
+Slack : -2.785
+TNS   : -7.115
+
+Type  : Slow Model Hold 'iKEY[0]'
+Slack : -2.753
+TNS   : -59.114
+
+Type  : Slow Model Hold 'iCLK_28'
+Slack : 1.027
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'iCLK_28'
+Slack : -2.000
+TNS   : -329.380
+
+Type  : Slow Model Minimum Pulse Width 'iKEY[0]'
+Slack : -1.222
+TNS   : -1189.222
+
+Type  : Slow Model Minimum Pulse Width 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'iKEY[0]'
+Slack : -6.393
+TNS   : -2977.303
+
+Type  : Fast Model Setup 'iCLK_28'
+Slack : -1.460
+TNS   : -55.483
+
+Type  : Fast Model Setup 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]'
+Slack : -1.315
+TNS   : -2.916
+
+Type  : Fast Model Setup 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[0]'
+Slack : 0.036
+TNS   : 0.000
+
+Type  : Fast Model Hold 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]'
+Slack : -1.829
+TNS   : -12.617
+
+Type  : Fast Model Hold 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[0]'
+Slack : -1.632
+TNS   : -4.781
+
+Type  : Fast Model Hold 'iKEY[0]'
+Slack : -1.570
+TNS   : -38.415
+
+Type  : Fast Model Hold 'iCLK_28'
+Slack : 0.214
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'iCLK_28'
+Slack : -2.000
+TNS   : -329.380
+
+Type  : Fast Model Minimum Pulse Width 'iKEY[0]'
+Slack : -1.222
+TNS   : -1189.222
+
+Type  : Fast Model Minimum Pulse Width 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|estado[2]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'multicicloMIPS:multicicloMIPS0|controleMIPS:controle|opALU[0]'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

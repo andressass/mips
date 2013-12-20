@@ -1,0 +1,384 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.operativaMIPSpkg.all;
+
+entity operativaMIPS is
+	port (
+			reset				: in std_logic;
+			clk					: in std_logic;
+			clkAddressMem		: in std_logic;
+			opALU					: in std_logic_vector (1 downto 0);
+			orgAALU				: in std_logic;
+			orgBALU				: in std_logic_vector (1 downto 0);
+			writeBREG			: in std_logic;
+			regDst				: in std_logic;
+			Mem2Reg				: in std_logic;
+			writeMem				: in std_logic;
+			iorD					: in std_logic;
+			escreveIR			: in std_logic;
+			orgPC					: in std_logic_vector (1 downto 0);
+			escrevePC			: in std_logic;
+			escrevePCCond		: in std_logic;
+			escrevePCCondN		: in std_logic;
+			PC_t					: out std_logic_vector(31 downto 0);
+			saidaMuxMem_t		: out std_logic_vector(7 downto 0);
+			RI_t					: out std_logic_vector(31 downto 0);
+			MDR_t					: out std_logic_vector(31 downto 0);
+			saidaMuxRegDst_t	: out std_logic_vector(4 downto 0);
+			saidaMuxMem2Reg_t	: out std_logic_vector(31 downto 0);
+			regA_t				: out std_logic_vector(31 downto 0);
+			regB_t				: out std_logic_vector(31 downto 0);
+			saidaCntrALU_t		: out std_logic_vector(3 downto 0);
+			saidaMuxULA1_t		: out std_logic_vector(31 downto 0);
+			saidaMuxULA2_t		: out std_logic_vector(31 downto 0);
+			shamt_t				: out std_logic_vector(4 downto 0);
+			zero_t				: out std_logic;
+			SaidaALU_t			: out std_logic_vector(31 downto 0);
+			saidaMuxPC_t		: out std_logic_vector(31 downto 0)
+	);
+end operativaMIPS;
+
+architecture behavior of operativaMIPS is
+	-- Registrador PC
+	signal PC					: std_logic_vector(31 downto 0) := "00000000000000000000000000000000";
+	
+	-- Sinal da saida do modulo Memoria
+	signal sinal_q				: std_logic_vector(31 downto 0);
+	
+	-- Sinal da saida do mux para conectar com o sinal da entrada adress do modulo Memoria
+	signal saidaMuxMem 		: std_logic_vector(7 downto 0);
+	
+	-- Registrador RI
+	signal RI					: std_logic_vector(31 downto 0);
+	
+	-- Registrador MDR
+	signal MDR					: std_logic_vector(31 downto 0);
+	
+	-- Sinal da saida do mux para conectar com o sinal da entrada Registrador para escrita do modulo BREG
+	signal saidaMuxRegDst	: std_logic_vector(4 downto 0);
+	
+	-- Sinal da saida do mux para conectar com o sinal da entrada Dados para escrita do modulo BREG
+	signal saidaMuxMem2Reg	: std_logic_vector(31 downto 0);
+
+	-- Sinais das saidas do modulo BREG
+	signal sinal_r1			: std_logic_vector(31 downto 0);
+	signal sinal_r2			: std_logic_vector(31 downto 0);
+	
+	-- Registradores A e B
+	signal regA					: std_logic_vector(31 downto 0);
+	signal regB					: std_logic_vector(31 downto 0);
+	
+	-- Sinal da saida do controle da ULA
+	signal saidaCntrALU		: std_logic_vector(3 downto 0);
+	
+	-- Sinais da saida dos mux para conectar com os sinais da prim e seg entrada, respect, do modulo ULA
+	signal saidaMuxULA1		: std_logic_vector(31 downto 0);
+	signal saidaMuxULA2		: std_logic_vector(31 downto 0);
+	
+	-- Sinal de entrada do modulo ULA
+	signal shamt_sinal		: std_logic_vector(4 downto 0);
+	
+	-- Sinais das saidas do modulo ULA
+	signal sinal_Z				: std_logic_vector(31 downto 0);
+	signal sinal_zero			: std_logic;
+	
+	-- Sinal de entrada do mux que seleciona a segunda entrada do modulo ULA
+	signal sinal_ext			: std_logic_vector(31 downto 0);
+
+	-- Registrador SaidaALU
+	signal SaidaALU			: std_logic_vector(31 downto 0);
+	
+	-- Sinais da saida do mux para conectar com o PC
+	signal saidaMuxPC			: std_logic_vector(31 downto 0);
+begin
+	PC_t 					<= PC;
+	saidaMuxMem_t		<= saidaMuxMem;
+	RI_t					<= RI;
+	MDR_t					<= MDR;
+	saidaMuxRegDst_t	<= saidaMuxRegDst;
+	saidaMuxMem2Reg_t	<= saidaMuxMem2Reg;
+	regA_t				<= regA;
+	regB_t				<= regB;
+	saidaCntrALU_t		<= saidaCntrALU;
+	saidaMuxULA1_t		<= saidaMuxULA1;
+	saidaMuxULA2_t		<= saidaMuxULA2;
+	shamt_t				<= shamt_sinal;
+	zero_t				<= sinal_zero;
+	SaidaALU_t			<= SaidaALU;
+	saidaMuxPC_t		<= saidaMuxPC;
+	
+	--escreveNoPC <= (escrevePC or (escrevePCCond and sinal_zero) or (escrevePCCondN and (not sinal_zero)));
+	
+	-----------------------------
+	-- Implementacao do modulo PC
+	-----------------------------
+	PC_behavior : process (clk, escrevePCCond, sinal_zero, escrevePCCondN) is
+	begin
+		--Se estiver na subida do clock e							
+			-- Se escrevePC estiver ativado ou eh uma instrucao beq e foi verificado q os regA e regB sao iguais
+			if(clk'event and clk = '1'and (escrevePC or (escrevePCCond and sinal_zero) or (escrevePCCondN and (not sinal_zero))) = '1') then
+				-- O valor do PC muda
+				PC <= saidaMuxPC;			
+			end if;
+	end process PC_behavior;
+	
+	----------------------------------------------------------
+	-- Implementacao do mux que seleciona a entrada da Memoria
+	----------------------------------------------------------
+	sel_mux_mem_behav: with iorD select
+							-- Se for o endereco de uma instrucao a ser lida
+		saidaMuxMem <= '0' & PC(8 downto 2) when '0',
+							--Se for o endereco para se escrever ou ler um dado
+					      '1' & SaidaALU(8 downto 2) when '1',
+							-- Se outra operacao
+							"UUUUUUUU" when others;
+							
+	-- Obs.: Devido as restricoes de memoria, o espaco de enderecamento eh reduzido de 32 bits para 8 bits.
+	-- A concatenacao eh necessaria para que um dado nao seja escrito sobre uma instrucao e vice-versa.
+	-- Assim, o dado e a instrucao possuem metade da memoria cada um.
+							
+	----------------------------------
+	-- Implementacao do modulo Memoria
+	----------------------------------
+	mem: memoriaMIPS
+				port map (
+								address	=> saidaMuxMem,
+								clock		=> clkAddressMem,
+								data		=> regB,
+								wren		=> writeMem,
+								q			=> sinal_q
+				);
+	
+	---------------------------------------------
+	-- Implementacao do Registrador de Instrucao
+	---------------------------------------------
+	RI_behavior : process (clk) is
+	begin
+		--Se estiver na subida do clock
+		if clk'event and clk = '1' then
+			-- Se o sinal de escrita do RI estiver ativado
+			if escreveIR = '1' then
+				-- O valor do RI muda, ou seja, esta no estado fetch
+				RI <= sinal_q;
+			end if;
+		end if;	
+	end process RI_behavior;
+	
+	---------------------------------------------------
+	-- Implementacao do Registrador de Dados da Memoria
+	---------------------------------------------------
+	MDR_behavior : process (clk) is
+	begin
+		--Se estiver na subida do clock
+		if clk'event and clk = '1' then
+			-- O valor do MDR muda
+			MDR <= sinal_q;
+		end if;	
+	end process MDR_behavior;
+	
+	------------------------------------------------------------------------------------------
+	-- Implementacao do mux que seleciona a entrada do Registrador para escrita do modulo BREG
+	------------------------------------------------------------------------------------------
+	sel_mux_regDst_behav: with regDst select
+								-- Instrucao lw
+		saidaMuxRegDst <= RI(20 downto 16) when '0',
+								-- Instrucao do tipo-R
+						      RI(15 downto 11) when '1',
+								-- Se outra operacao
+						      "UUUUU" when others;
+								
+	------------------------------------------------------------------------------------
+	-- Implementacao do mux que seleciona a entrada do Dados para escrita do modulo BREG
+	------------------------------------------------------------------------------------
+	sel_mux_Mem2Reg_behav: with Mem2Reg select
+								 -- Instrucao tipo-R
+		saidaMuxMem2Reg <= SaidaALU when '0',
+								 -- Instrucao lw
+						       MDR when '1',
+								 -- Se outra operacao
+						       "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" when others;
+	
+	----------------------------------
+	-- Implementacao do modulo BREG
+	----------------------------------
+	breg: bregMIPS
+				port map (
+								clk	=> clk,
+								wreg	=> writeBREG,
+								add1	=> RI(25 downto 21),
+								add2	=> RI(20 downto 16),
+								wadd	=> saidaMuxRegDst,
+								wdata	=> saidaMuxMem2Reg,
+								r1		=> sinal_r1,
+								r2		=> sinal_r2
+				);
+				
+	---------------------------------------------------
+	-- Implementacao do Registrador A
+	---------------------------------------------------
+	regA_behavior : process (clk) is
+	begin
+		--Se estiver na subida do clock
+		if clk'event and clk = '1' then
+			-- O valor do A muda
+			regA <= sinal_r1;
+		end if;	
+	end process regA_behavior;
+	
+	---------------------------------------------------
+	-- Implementacao do Registrador B
+	---------------------------------------------------
+	regB_behavior : process (clk) is
+	begin
+		--Se estiver na subida do clock
+		if clk'event and clk = '1' then
+			-- O valor do B muda
+			regB <= sinal_r2;
+		end if;	
+	end process regB_behavior;
+	
+	-----------------------------------
+	-- Implementacao do Controle da ALU
+	-----------------------------------
+	controleALU : process (opALU, RI) is
+	begin
+		case opALU is
+			-- Se for uma operacao Add
+			when "00" =>
+				saidaCntrALU <= "0000";
+				
+			-- Se for uma operacao Sub
+			when "01" =>
+				saidaCntrALU <= "0001";
+				
+			-- Se for uma instrucao do tipo-R
+			when "10" =>
+				-- Obtem o campo funct
+				case RI(5 downto 0) is
+					-- Se for uma operacao Add
+					when "100000" =>
+						saidaCntrALU <= "0000";
+					
+					-- Se for uma operacao Sub
+					when "100010" =>
+						saidaCntrALU <= "0001";
+						
+					-- Se for uma operacao and
+					when "100100" =>
+						saidaCntrALU <= "0010";
+					
+					-- Se for uma operacao or
+					when "100101" =>
+						saidaCntrALU <= "0011";
+						
+					-- Se for uma operacao xor
+					when "100110" =>
+						saidaCntrALU <= "0101";
+						
+					-- Se for uma operacao slt
+					when "101010" =>
+						saidaCntrALU <= "0111";
+						
+					-- Se for uma operacao sll
+					when "000000" =>
+						saidaCntrALU <= "1000";
+						
+					-- Se for uma operacao srl
+					when "000010" =>
+						saidaCntrALU <= "1001";
+						
+					-- Se for uma operacao sra
+					when "000011" =>
+						saidaCntrALU <= "1010";
+				
+					-- Se outra operacao
+					when others =>
+						-- Faz nada
+				end case;
+				
+			-- Se outra operacao
+			when others =>
+				-- Faz nada
+		end case;
+	end process controleALU;
+	
+	------------------------------------------------------------------------------------
+	-- Implementacao do mux que seleciona a primeira entrada do modulo ULA
+	------------------------------------------------------------------------------------
+	sel_mux_ula1_behav: with orgAALU select
+							 -- Operacao a ser feita com PC
+		saidaMuxULA1 <= PC when '0',
+							 -- Operacao a ser feita com regA
+						    regA when '1',
+							 -- Se outra operacao
+						    "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" when others;
+								 
+	------------------------------------------------------------------------------------
+	-- Implementacao do mux que seleciona a segunda entrada do modulo ULA
+	------------------------------------------------------------------------------------
+	sel_mux_ula2_behav: with orgBALU select
+							 -- Operacao a ser feita com regB
+		saidaMuxULA2 <= regB when "00",
+							 -- Operaca PC + 4
+						    "00000000000000000000000000000100" when "01",
+							 -- Operacao com sinal extendido para calcular endereco para instrucao lw ou sw
+							 sinal_ext when "10",
+							 -- Operacao com sinal extendido e deslocado 2 a esq para calcular o endereco para onde se quer saltar
+							 sinal_ext(29 downto 0) & "00" when "11",
+							 -- Se outra operacao
+						    "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" when others;
+							 
+	-----------------------------------						 
+	-- Implementacao do sinal extendido
+	-----------------------------------
+	sinal_ext_behav: with RI(15) select
+						 -- Se o sinal for positivo
+		sinal_ext <= "0000000000000000" & RI(15 downto 0) when '0',
+						 -- Se o sinal for negativo
+						 "1111111111111111" & RI(15 downto 0) when '1',
+						 -- Se outra operacao
+						 "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" when others;
+							 
+	------------------------------
+	-- Implementacao do modulo ULA
+	------------------------------
+	
+	shamt_sinal <= RI(10 downto 6);
+	
+	ula: ulaMIPS
+				port map (
+								opcode	=> saidaCntrALU,
+								A			=> saidaMuxULA1,
+								B			=> saidaMuxULA2,
+								shamt		=> shamt_sinal,
+								Z			=> sinal_Z,
+								zero		=> sinal_zero
+				);
+				
+	----------------------------------------
+	-- Implementacao do Registrador SaidaALU
+	----------------------------------------
+	SaidaALU_behavior : process (clk) is
+	begin
+		--Se estiver na subida do clock
+		if clk'event and clk = '1' then
+			-- O valor do SaidaALU muda
+			SaidaALU <= sinal_Z;
+		end if;	
+	end process SaidaALU_behavior;
+	
+	-----------------------------------------------------
+	-- Implementacao do mux que seleciona a entrada do PC
+	-----------------------------------------------------
+	sel_mux_PC_behav: with orgPC select
+						  -- PC + 4
+		saidaMuxPC <= sinal_Z when "00",
+						  -- Instrucao beq, onde calculou-se o endereco para onde se quer saltar
+						  SaidaALU when "01",
+						  -- Instrucao jump
+						  (PC(31 downto 28) & RI(25 downto 0) & "00") when "10",
+						  -- Se outra operacao
+						  "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" when others;
+	
+end architecture behavior;
